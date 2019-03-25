@@ -16,6 +16,14 @@
         app:srcCompat="@drawable/water" />
 
 
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:text="SEU-UCL-溯源" />
+
     <RadioGroup
         android:id="@+id/rg_choselogkind"
         android:layout_width="match_parent"
