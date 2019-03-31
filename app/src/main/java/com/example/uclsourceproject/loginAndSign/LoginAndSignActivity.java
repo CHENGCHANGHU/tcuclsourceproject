@@ -191,7 +191,7 @@ public class LoginAndSignActivity extends AppCompatActivity
             //企业组织登录操作
             Log.d(TAG, "企业组织用户登录操作");
 
-            HttpUtil.sendOKHttp3RequestPOST(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/login?characterFlag=0",
+            HttpUtil.sendOKHttp3RequestPOST(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/login?characterFlag=0",
                     JsonUtil.getJSON(
                             "ContactNo", Integer.parseInt(contactNo),
                             "Password", password
@@ -222,7 +222,7 @@ public class LoginAndSignActivity extends AppCompatActivity
             //个人用户登录操作
             Log.d(TAG, "个人用户登录操作");
 
-            HttpUtil.sendOKHttp3RequestPOST(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/login?CharacterFlag=1",
+            HttpUtil.sendOKHttp3RequestPOST(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/login?CharacterFlag=1",
                     JsonUtil.getJSON(
                             "ContactNo", Integer.parseInt(contactNo),
                             "Password", password
@@ -282,7 +282,7 @@ public class LoginAndSignActivity extends AppCompatActivity
             prefEditor.putString("userName", username);
             prefEditor.putString("password", password);
             prefEditor.putInt("characterFlags", characterFlags);
-            prefEditor.putString("id", id);
+
         } else {
             prefEditor.putBoolean("rememberPwd", false);
             prefEditor.remove("userName");
@@ -292,6 +292,8 @@ public class LoginAndSignActivity extends AppCompatActivity
             etxPassword.setText("");
             prefEditor.putInt("characterFlags", 0);
         }
+
+        prefEditor.putString("id", id);
 
         prefEditor.apply();
     }

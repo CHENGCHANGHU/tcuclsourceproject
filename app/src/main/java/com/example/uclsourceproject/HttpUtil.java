@@ -16,6 +16,7 @@ import okhttp3.Response;
 public class HttpUtil {
     public static String BASEURL_LOGIN_SIGN_PRODUCE = "http://223.3.79.211:8000";
     public static String BASEURL_SELL = "http://223.3.79.119:8000";
+    public static String BASEURL_TRANSPORT = "http://223.3.89.141:8000";
 
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");

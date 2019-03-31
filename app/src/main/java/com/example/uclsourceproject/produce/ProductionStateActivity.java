@@ -44,7 +44,16 @@ public class ProductionStateActivity extends AppCompatActivity
         initUI();
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        Log.d(TAG, "SharedPreferences: " + pref.getInt("characterFlag", 0));
+//        Toast.makeText(this, "" + pref.getBoolean("rememberPwd", false), Toast.LENGTH_SHORT).show();
+        prefEditor = pref.edit();
+        prefEditor.apply();
+
+        Log.d(TAG, "SharedPreferences: " + String.valueOf(pref.getInt("characterFlags", 0b000000))
+                + "--" + pref.getString("id", "id"));
+        Toast.makeText(this,
+                String.valueOf(pref.getInt("characterFlags", 0b000000))
+                        + pref.getString("id", "id"),
+                Toast.LENGTH_SHORT).show();
 
     }
 
