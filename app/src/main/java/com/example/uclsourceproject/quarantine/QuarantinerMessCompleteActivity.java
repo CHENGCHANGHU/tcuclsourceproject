@@ -29,6 +29,7 @@ import com.example.uclsourceproject.TCCallbackListener;
 import com.example.uclsourceproject.produce.ProducerMessCompleteActivity;
 import com.example.uclsourceproject.produce.ProductionStateActivity;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class QuarantinerMessCompleteActivity extends AppCompatActivity
@@ -122,7 +123,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
             case R.id.btn_photo_idcard2:
                 BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
                     @Override
-                    public void jump(Uri uri, int requestCode) {
+                    public void jump(Uri uri, File file, int requestCode) {
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         idcardUri = uri;
@@ -134,7 +135,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
             case R.id.btn_photo_certificates2:
                 BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
                     @Override
-                    public void jump(Uri uri, int requestCode) {
+                    public void jump(Uri uri, File file, int requestCode) {
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         certificatesUri = uri;
@@ -146,7 +147,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
             case R.id.btn_photo_signingveterinarycertificate2:
                 BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
                     @Override
-                    public void jump(Uri uri, int requestCode) {
+                    public void jump(Uri uri, File file, int requestCode) {
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         signingveterinarycertificateUri = uri;
@@ -158,7 +159,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
             case R.id.btn_photo_licensedveterinaryqc2:
                 BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
                     @Override
-                    public void jump(Uri uri, int requestCode) {
+                    public void jump(Uri uri, File file, int requestCode) {
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         licensedveterinaryqcUri = uri;

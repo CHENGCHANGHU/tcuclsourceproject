@@ -94,12 +94,14 @@ public class BaseUserSignUpActivity extends AppCompatActivity
             case R.id.btn_baseUserSignUp:
                 Log.d(TAG, "提交注册");
                 baseUserSignUp();
+                Log.d(TAG, "提交注册2");
                 break;
 
         }
     }
 
     private boolean baseUserSignUp() {
+        Log.d(TAG, "baseUserSignUp: in");
         boolean access = false;
 
         String userName = etxUserName.getText().toString();
@@ -116,79 +118,77 @@ public class BaseUserSignUpActivity extends AppCompatActivity
             return access;
         }
 
-        Log.d(TAG, "baseUserSignUp: ");
-        //http://223.3.72.161/register??characterFlag=1
-//        HttpUtil.sendOKHttp3RequestPOST(
-//                HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/register?CharacterFlag=1",
-//                JsonUtil.getJSON(
-//                        "ConsumerName", userName,
-//                        "ContactNo", Integer.parseInt(contact),
-//                        "Password", password
-//                ),
-//                new Callback() {
-//                    @Override
-//                    public void onFailure(Call call, IOException e) {
-//                        Log.d(TAG, "onFailure: " + e.toString());
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Call call, Response response) throws IOException {
-//                        final String resStr = response.body().string();
-//                        Log.d(TAG, "response.code: " + response.code());
-//                        Log.d(TAG, "resStr: " + resStr);
-//                        try {
-//                            JSONObject resJson = new JSONObject(resStr);
-//                            Log.d(TAG, "resJson: " + resJson.toString());
-//
-//                            if (true) {
-//                                intent = new Intent(BaseUserSignUpActivity.this, LoginAndSignActivity.class);
-//                                startActivity(intent);
-//                            }
-//                        } catch (JSONException e) {
-//                            Log.d(TAG, "JSONException: " + e.toString());
-//                            etxContact.setText("");
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//
-//                                    Toast.makeText(BaseUserSignUpActivity.this, resStr, Toast.LENGTH_SHORT).show();
-//                                }
-//                            });
-//
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//        );
-
-        HttpUtil.sendOKHttp3RequestGET(
-//                HttpUtil.BASEURL_SELL + "/sell/Sell2/inquiry_supermarket?CompanyID=123",
-                "http://223.3.74.177:8000/transport/product_enter/transpoter/apply/",
+        HttpUtil.sendOKHttp3RequestPOST(
+                HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/register?CharacterFlag=1",
+                JsonUtil.getJSON(
+                        "ConsumerName", userName,
+                        "ContactNo", Integer.parseInt(contact),
+                        "Password", password
+                ),
                 new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.d(TAG, "onFailure: " + e);
+                        Log.d(TAG, "onFailure: " + e.toString());
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        String resStr = response.body().string();
+                        final String resStr = response.body().string();
                         Log.d(TAG, "response.code: " + response.code());
                         Log.d(TAG, "resStr: " + resStr);
+                        try {
+                            JSONObject resJson = new JSONObject(resStr);
+                            Log.d(TAG, "resJson: " + resJson.toString());
 
-                        //处理多个Json
-                        Log.d(TAG, "length: " + resStr.split("\\{").length);
-                        Log.d(TAG, "0: " + resStr.split("\\{")[0]);
-                        Log.d(TAG, "1: " + resStr.split("\\{")[1]);
-                        String test = "{\"hhh\":123,\"huhuhuh\":\"jjj\"}" +
-                                "{\"hhh\":123,\"qwhdiuq\":\"qwq\"}" +
-                                "{\"hhh\":123,\"bhbhbhb\":\"jjqdedj\"}" +
-                                "{\"hhh\":123,\"dcc\":\"vfvfvf\"}" +
-                                "{\"hhh\":123,\"jiuyiu\":\"ijqutuydfwqu\"}" +
-                                "{\"hhh\":12134223,\"dwqdwqd\":\"qewqedw\"}";
-                        Log.d(TAG, "onResponse: " + JsonUtil.getJSONArray(resStr).toString());
+                            if (true) {
+                                intent = new Intent(BaseUserSignUpActivity.this, LoginAndSignActivity.class);
+                                startActivity(intent);
+                            }
+                        } catch (JSONException e) {
+                            Log.d(TAG, "JSONException: " + e.toString());
+                            etxContact.setText("");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    Toast.makeText(BaseUserSignUpActivity.this, resStr, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            e.printStackTrace();
+                        }
                     }
-                });
+                }
+        );
+
+//        HttpUtil.sendOKHttp3RequestGET(
+////                HttpUtil.BASEURL_SELL + "/sell/Sell2/inquiry_supermarket?CompanyID=123",
+//                "http://223.3.74.177:8000/transport/product_enter/transpoter/apply/",
+//                new Callback() {
+//                    @Override
+//                    public void onFailure(Call call, IOException e) {
+//                        Log.d(TAG, "onFailure: " + e);
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Call call, Response response) throws IOException {
+//                        String resStr = response.body().string();
+//                        Log.d(TAG, "response.code: " + response.code());
+//                        Log.d(TAG, "resStr: " + resStr);
+//
+//                        //处理多个Json
+//                        Log.d(TAG, "length: " + resStr.split("\\{").length);
+//                        Log.d(TAG, "0: " + resStr.split("\\{")[0]);
+//                        Log.d(TAG, "1: " + resStr.split("\\{")[1]);
+//                        String test = "{\"hhh\":123,\"huhuhuh\":\"jjj\"}" +
+//                                "{\"hhh\":123,\"qwhdiuq\":\"qwq\"}" +
+//                                "{\"hhh\":123,\"bhbhbhb\":\"jjqdedj\"}" +
+//                                "{\"hhh\":123,\"dcc\":\"vfvfvf\"}" +
+//                                "{\"hhh\":123,\"jiuyiu\":\"ijqutuydfwqu\"}" +
+//                                "{\"hhh\":12134223,\"dwqdwqd\":\"qewqedw\"}";
+//                        Log.d(TAG, "onResponse: " + JsonUtil.getJSONArray(resStr).toString());
+//                    }
+//                });
 
 //        HttpUtil.sendOKHttp3RequestPOST(
 //                "",
@@ -217,7 +217,7 @@ public class BaseUserSignUpActivity extends AppCompatActivity
 //                        Log.d(TAG, "resStr: " + resStr);
 //                    }
 //                });
-
+        Log.d(TAG, "baseUserSignUp: in");
         return access;
     }
 }
