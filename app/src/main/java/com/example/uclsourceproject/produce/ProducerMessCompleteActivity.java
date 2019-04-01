@@ -38,7 +38,12 @@ import com.example.uclsourceproject.HttpUtil;
 import com.example.uclsourceproject.JsonUtil;
 import com.example.uclsourceproject.R;
 import com.example.uclsourceproject.TCCallbackListener;
+import com.example.uclsourceproject.loginAndSign.LoginAndSignActivity;
+import com.example.uclsourceproject.loginAndSign.ResponsibleChooseActivity;
 import com.example.uclsourceproject.process.ProcesserMessCompleteActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -224,86 +229,126 @@ public class ProducerMessCompleteActivity extends AppCompatActivity
 
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
-                                String resStr = response.body().string();
+                                final String resStr = response.body().string();
                                 Log.d(TAG, "response.code: " + response.code());
                                 Log.d(TAG, "生产者信息完善resStr: " + resStr);
-
                                 try {
-                                    MediaType mediaType = MediaType.parse("image/*; charset=utf-8");
-                                    OkHttpClient okHttpClient = new OkHttpClient();
-                                    Log.d(TAG, "IDCardFile.getPath: " + IDCardFile.getPath());
-
-//                                    MultipartBody body = new MultipartBody.Builder("AaB03x")
-//                                            .setType(MultipartBody.FORM)
-//                                            .addFormDataPart("imgID", "imgID", new MultipartBody.Builder("BbC04y")
-//                                                    .addPart(Headers.of("Content-Disposition", "form-data; filename=\"img.png\""),
-//                                                            RequestBody.create(
-//                                                                    MediaType.parse("image/jpg"),
-//                                                                    IDCardFile))
-//                                                    .build())
-//                                            .addFormDataPart("imgwork", "imgwork", new MultipartBody.Builder("BbC04y")
-//                                                    .addPart(Headers.of("Content-Disposition", "form-data; filename=\"img.png\""),
-//                                                            RequestBody.create(
-//                                                                    MediaType.parse("image/jpg"),
-//                                                                    CertificatesFile))
-//                                                    .build())
-//                                            .addFormDataPart("ConsumerId", pref.getString("id", "id"))
-//                                            .addFormDataPart("CharacterFlag", "0")
-//                                            .build();
-//                                    MultipartBody body = new MultipartBody.Builder("BbC04y")
-//                                            .addPart(Headers.of("Content-Disposition", "form-data; name=\"imgID\", filename=\"imgID.jpg\""),
-//                                                    RequestBody.create(
-//                                                            MediaType.parse("image/jpg"),
-//                                                            IDCardFile))
-//                                            .addPart(Headers.of("Content-Disposition", "form-data; name=\"imgwork\", filename=\"imgwork.jpg\""),
-//                                                    RequestBody.create(
-//                                                            MediaType.parse("image/jpg"),
-//                                                            IDCardFile))
-//                                            .addPart(Headers.of("Content-Disposition", "form-data; name=\"imgwork\", filename=\"imgwork.jpg\""),
-//                                                    RequestBody.create(
-//                                                            MediaType.parse("image/jpg"),
-//                                                            IDCardFile))
-//                                            .build();
-                                    MultipartBody body = new MultipartBody.Builder("AaB03x")
-//                                    MultipartBody body = new MultipartBody.Builder("")
-                                            .setType(MultipartBody.FORM)
-                                            .addFormDataPart("imgID", "imgID.jpg", RequestBody.create(
-//                                                    MediaType.parse("image/jpeg"),
-                                                    MediaType.parse("image/*"),
-                                                    IDCardFile))
-                                            .addFormDataPart("imgwork", "imgwork.jpg", RequestBody.create(
-                                                    MediaType.parse("image/*"),
-                                                    CertificatesFile))
-                                            .addFormDataPart("ConsumerId", pref.getString("id", "id"))
-                                            .addFormDataPart("CharacterFlag", "0")
-                                            .build();
-
-                                    Request request = new Request.Builder()
-                                            .url(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/img_fulfil")
-                                            .post(body)
-                                            .build();
-                                    okHttpClient.newCall(request).enqueue(new Callback() {
+                                    JSONObject resJson = null;
+                                    resJson = new JSONObject(resStr);
+                                    Log.d(TAG, "resJson: " + resJson.toString());
+                                    runOnUiThread(new Runnable() {
                                         @Override
-                                        public void onFailure(Call call, IOException e) {
-                                            Log.d(TAG, "onFailure: " + e.getMessage());
+                                        public void run() {
+                                            btnProducerSave.setClickable(false);
+                                            btnProducerSave.setText("正在提交");
+                                            btnProducerSave.setBackgroundResource(R.drawable.btn_bg_unclicked);
                                         }
+                                    });
+                                    HttpUtil.sendOKHttpMultipartRequestPOST(
+                                            HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/img_fulfil",
+                                            new MultipartBody.Builder("AaB03x")
+//                                    MultipartBody body = new MultipartBody.Builder("")
+                                                    .setType(MultipartBody.FORM)
+                                                    .addFormDataPart("imgID", "imgID.jpg", RequestBody.create(
+//                                                    MediaType.parse("image/jpeg"),
+                                                            MediaType.parse("image/*"),
+                                                            IDCardFile))
+                                                    .addFormDataPart("imgwork", "imgwork.jpg", RequestBody.create(
+                                                            MediaType.parse("image/*"),
+                                                            CertificatesFile))
+                                                    .addFormDataPart("ConsumerId", pref.getString("id", "id"))
+                                                    .addFormDataPart("CharacterFlag", "0")
+                                                    .build(),
+                                            new Callback() {
+                                                @Override
+                                                public void onFailure(Call call, IOException e) {
+                                                    Log.d(TAG, "onFailure: " + e.getMessage());
+                                                }
 
-                                        @Override
-                                        public void onResponse(Call call, Response response) throws IOException {
-                                            String resStr = response.body().string();
-//                                            Log.d(TAG, "resStr: " + resStr);
-                                            Log.d(TAG, "protocol:" + response.protocol() + " code:" + response.code() + " message:" + response.message());
+                                                @Override
+                                                public void onResponse(Call call, Response response) throws IOException {
+                                                    String resStr = response.body().string();
+                                                    Log.d(TAG, "protocol:" + response.protocol() + " code:" + response.code() + " message:" + response.message());
 //                                            Headers headers = response.headers();
 //                                            for (int i = 0; i < headers.size(); i++) {
 //                                                Log.d(TAG, headers.name(i) + ":" + headers.value(i));
 //                                            }
-                                            Log.d(TAG, "onResponse: " + resStr);
+                                                    Log.d(TAG, "onResponse: " + resStr);
+                                                    if (response.code() == 200) {
+
+                                                        intent = new Intent(ProducerMessCompleteActivity.this, ProductionStateActivity.class);
+                                                        intent.putExtra("title", "羊状态信息查询");
+                                                        startActivity(intent);
+                                                        runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                btnProducerSave.setClickable(true);
+                                                                btnProducerSave.setText("提交保存");
+                                                                btnProducerSave.setBackgroundResource(R.drawable.btn_selector);
+                                                            }
+                                                        });
+                                                        finish();
+                                                    }
+                                                }
+                                            }
+                                    );
+                                } catch (JSONException e) {
+                                    Log.d(TAG, "JSONException: " + e.toString());
+//                                etxContact.setText("");
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(ProducerMessCompleteActivity.this, resStr, Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                } catch (Exception e) {
                                     e.printStackTrace();
-                                    Log.d(TAG, "图片失败: " + e);
                                 }
+
+
+//                                try {
+//                                    MediaType mediaType = MediaType.parse("image/*; charset=utf-8");
+//                                    OkHttpClient okHttpClient = new OkHttpClient();
+//                                    Log.d(TAG, "IDCardFile.getPath: " + IDCardFile.getPath());
+//
+//                                    MultipartBody body = new MultipartBody.Builder("AaB03x")
+////                                    MultipartBody body = new MultipartBody.Builder("")
+//                                            .setType(MultipartBody.FORM)
+//                                            .addFormDataPart("imgID", "imgID.jpg", RequestBody.create(
+////                                                    MediaType.parse("image/jpeg"),
+//                                                    MediaType.parse("image/*"),
+//                                                    IDCardFile))
+//                                            .addFormDataPart("imgwork", "imgwork.jpg", RequestBody.create(
+//                                                    MediaType.parse("image/*"),
+//                                                    CertificatesFile))
+//                                            .addFormDataPart("ConsumerId", pref.getString("id", "id"))
+//                                            .addFormDataPart("CharacterFlag", "0")
+//                                            .build();
+//
+//                                    Request request = new Request.Builder()
+//                                            .url(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/img_fulfil")
+//                                            .post(body)
+//                                            .build();
+//                                    okHttpClient.newCall(request).enqueue(new Callback() {
+//                                        @Override
+//                                        public void onFailure(Call call, IOException e) {
+//                                            Log.d(TAG, "onFailure: " + e.getMessage());
+//                                        }
+//
+//                                        @Override
+//                                        public void onResponse(Call call, Response response) throws IOException {
+//                                            String resStr = response.body().string();
+//                                            Log.d(TAG, "protocol:" + response.protocol() + " code:" + response.code() + " message:" + response.message());
+////                                            Headers headers = response.headers();
+////                                            for (int i = 0; i < headers.size(); i++) {
+////                                                Log.d(TAG, headers.name(i) + ":" + headers.value(i));
+////                                            }
+//                                            Log.d(TAG, "onResponse: " + resStr);
+//                                        }
+//                                    });
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                    Log.d(TAG, "图片失败: " + e);
+//                                }
                             }
                         }
                 );
@@ -375,8 +420,6 @@ public class ProducerMessCompleteActivity extends AppCompatActivity
                     }
                 }
                 break;
-
-
         }
 
     }

@@ -1,11 +1,14 @@
 package com.example.uclsourceproject;
 
 import android.os.Message;
+import android.util.Log;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -60,6 +63,23 @@ public class HttpUtil {
                         .url(sb.toString())
                         .build();
                 client.newCall(request).enqueue(callback);
+            }
+        }).start();
+    }
+
+    public static void sendOKHttpMultipartRequestPOST(final String url,
+                                                      final MultipartBody body,
+                                                      final okhttp3.Callback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient = new OkHttpClient();
+
+                Request request = new Request.Builder()
+                        .url(url)
+                        .post(body)
+                        .build();
+                okHttpClient.newCall(request).enqueue(callback);
             }
         }).start();
     }

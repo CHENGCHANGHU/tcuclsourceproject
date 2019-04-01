@@ -86,7 +86,7 @@ public class BaseUtil {
     public static Uri takeAPhoto(Context context, String path,
                                  TCCallbackListener tcCallbackListener,
                                  int requestCode) {
-        File outputImage = new File(path, "image.jpg");
+        File outputImage = new File(path, "image" + String.valueOf(requestCode) + ".jpg");
         Uri imageUri = null;
 
         try {

@@ -14,12 +14,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.uclsourceproject.HttpUtil;
+import com.example.uclsourceproject.JsonUtil;
 import com.example.uclsourceproject.R;
 import com.example.uclsourceproject.UCLadapters.ProductionStateAdapter;
 import com.example.uclsourceproject.UCLclasses.ProductionState;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class ProductionStateActivity extends AppCompatActivity
         implements ProductionStateAdapter.OnRecycleViewItemClickListener {
@@ -83,6 +92,24 @@ public class ProductionStateActivity extends AppCompatActivity
                     37);
             productionStateList.add(_ps);
         }
+
+        HttpUtil.sendOKHttp3RequestGET(
+                HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/produce/sheep_state",
+                new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.d(TAG, "onFailure: " + e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String resStr = response.body().string();
+                        Log.d(TAG, "code: " + response.code() + "resStr: " + resStr);
+                        ArrayList<JSONObject> js = JsonUtil.getJSONArray(resStr);
+                        Log.d(TAG, "js.toString: " + js.toString());
+                    }
+                }
+        );
     }
 
     @Override
