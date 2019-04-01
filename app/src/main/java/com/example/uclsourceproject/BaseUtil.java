@@ -111,7 +111,7 @@ public class BaseUtil {
         return imageUri;
     }
 
-    public static Uri getAlbumImagePath(Context context, Intent data) {
+    public static String getAlbumImagePath(Context context, Intent data) {
         String imagePath = null;
 
         Uri uri = data.getData();
@@ -145,7 +145,7 @@ public class BaseUtil {
 //            Log.d(TAG, "handleImageOnKitKat: null");
 //        }
 
-        return uri;
+        return imagePath;
     }
 
     public static void handleImageOnKitKat(Context context, Intent data) {

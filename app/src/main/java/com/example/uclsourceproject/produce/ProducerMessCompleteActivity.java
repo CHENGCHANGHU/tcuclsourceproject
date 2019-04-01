@@ -381,9 +381,9 @@ public class ProducerMessCompleteActivity extends AppCompatActivity
 //                handleImageOnKitKat(this, data);
                 if (resultCode == RESULT_OK) {
                     try {
-//                        Bitmap bitmap = BitmapFactory.decodeStream(
-//                                getContentResolver().openInputStream(
-//                                        BaseUtil.getAlbumImagePath(this, data)));
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        IDCardFile = new File(BaseUtil.getAlbumImagePath(this, data));
+
                         Bitmap bitmap = BitmapFactory.decodeStream(
                                 getContentResolver().openInputStream(data.getData()));
                         ivIDCard.setImageBitmap(bitmap);
@@ -411,6 +411,7 @@ public class ProducerMessCompleteActivity extends AppCompatActivity
 //                handleImageOnKitKat(this, data);
                 if (resultCode == RESULT_OK) {
                     try {
+                        CertificatesFile = new File(BaseUtil.getAlbumImagePath(this, data));
                         Bitmap bitmap = BitmapFactory.decodeStream(
                                 getContentResolver().openInputStream(data.getData()));
                         ivCertificates.setImageBitmap(bitmap);
