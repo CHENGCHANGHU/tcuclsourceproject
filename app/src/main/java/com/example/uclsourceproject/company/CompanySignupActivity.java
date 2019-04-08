@@ -157,7 +157,6 @@ public class CompanySignupActivity extends AppCompatActivity
                     }
                 });
 
-
                 break;
         }
     }
