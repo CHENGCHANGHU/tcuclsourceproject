@@ -92,4 +92,14 @@ public class JsonUtil {
         return tmp;
     }
 
+    public static boolean isJSON(String str) {
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+            return true;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

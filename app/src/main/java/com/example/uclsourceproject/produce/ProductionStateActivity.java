@@ -107,6 +107,8 @@ public class ProductionStateActivity extends AppCompatActivity
                         Log.d(TAG, "code: " + response.code() + "resStr: " + resStr);
                         ArrayList<JSONObject> js = JsonUtil.getJSONArray(resStr);
                         Log.d(TAG, "js.toString: " + js.toString());
+                        //json嵌套解析
+
                     }
                 }
         );

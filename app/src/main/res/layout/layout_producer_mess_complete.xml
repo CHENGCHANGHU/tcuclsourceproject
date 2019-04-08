@@ -89,7 +89,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/idcard" />
+                    app:srcCompat="@drawable/idcard1" />
 
                 <Button
                     android:id="@+id/btnPhotoIDCard"
@@ -139,7 +139,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/certificates" />
+                    app:srcCompat="@drawable/certificates1" />
 
                 <Button
                     android:id="@+id/btnPhotoCertificates"
