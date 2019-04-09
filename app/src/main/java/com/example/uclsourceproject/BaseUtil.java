@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.net.sip.SipSession;
 import android.os.Build;
@@ -285,6 +286,17 @@ public class BaseUtil {
 
     private static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public static Bitmap cropBitmap(Bitmap bitmap) {
+        int w = bitmap.getWidth(); // 得到图片的宽，高
+        int h = bitmap.getHeight();
+        int cropWidth = w >= h ? h : w;// 裁切后所取的正方形区域边长
+        cropWidth = 200;
+        int cropHeight = (int) (cropWidth / 1.2);
+        Matrix matrix = new Matrix();
+        matrix.preScale(1, 1);// 当 ratio=1，下面的 newBM 将会等价于 origin
+        return Bitmap.createBitmap(bitmap, 0, 0, cropWidth, cropHeight, matrix, false);
     }
 
 }

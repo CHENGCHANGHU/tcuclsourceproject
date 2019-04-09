@@ -1022,6 +1022,7 @@ public class CompanySignupActivity extends AppCompatActivity
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(
                                 getContentResolver().openInputStream(ProducerPaper1Uri));
+                        bitmap = BaseUtil.cropBitmap(bitmap);
                         ivProducerPaper1.setImageBitmap(bitmap);
                     } catch (FileNotFoundException e) {
                         Log.d(TAG, "相机调用: " + e);
