@@ -32,6 +32,8 @@ import com.example.uclsourceproject.JsonUtil;
 import com.example.uclsourceproject.R;
 import com.example.uclsourceproject.TCCallbackListener;
 import com.example.uclsourceproject.loginAndSign.LoginAndSignActivity;
+import com.example.uclsourceproject.produce.ProducerMessCompleteActivity;
+import com.example.uclsourceproject.produce.ProductionStateActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,6 +43,9 @@ import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import java.util.Arrays;
@@ -411,37 +416,171 @@ public class CompanySignupActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnCompanySignUp:
-                Toast.makeText(this,
-                        characterList.get(currCharacter) + " 注册成功", Toast.LENGTH_SHORT).show();
-//                intent = new Intent(CompanySignupActivity.this, LoginAndSignActivity.class);
-//                startActivity(intent);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        btnCompanySignUp.setClickable(false);
+                        btnCompanySignUp.setText("正在提交");
+                        btnCompanySignUp.setBackgroundResource(R.drawable.btn_bg_unclicked);
+                    }
+                });
 
                 String url = HttpUtil.BASEURL_SELL;
-                String postData = "";
+                MultipartBody multipartBody = null;
 
                 switch (currCharacter) {
                     case 0:
                         url += "";
-                        postData = JsonUtil.getJSON(
-                                "ConsumerId", "123",
-                                "ConsumerName", "Name"
-                        );
+                        multipartBody = new MultipartBody.Builder("AaB03x")
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("Flag", "1")
+                                .addFormDataPart("CompanyName1", etxCompanyName1.getText().toString())
+                                .addFormDataPart("Corporate1", etxCorporate1.getText().toString())
+                                .addFormDataPart("CoporateIDCardNo1", etxCoporateIDCardNo1.getText().toString())
+                                .addFormDataPart("CompanyContactNo1", etxCompanyContactNo1.getText().toString())
+                                .addFormDataPart("CompanySignUpTime1", etxCompanySignUpTime1.getText().toString())
+                                .addFormDataPart("LoginName1", etxLoginName1.getText().toString())
+                                .addFormDataPart("LoginPassword1", etxLoginPassword1.getText().toString())
+                                .addFormDataPart("TradeLocation1", etxTradeLocation1.getText().toString())
+                                .addFormDataPart("ProducerPaper1File", "ProducerPaper1File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProducerPaper1File))
+                                .addFormDataPart("ProducerPaper2File", "ProducerPaper2File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProducerPaper2File))
+                                .build();
                         break;
+                    case 1:
+                        url += "";
+                        multipartBody = new MultipartBody.Builder("AaB03x")
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("Flag", "2")
+                                .addFormDataPart("CompanyName2", etxCompanyName2.getText().toString())
+                                .addFormDataPart("TradeLocation2", etxTradeLocation2.getText().toString())
+                                .addFormDataPart("LoginName2", etxLoginName2.getText().toString())
+                                .addFormDataPart("LoginPassword2", etxLoginPassword2.getText().toString())
+                                .addFormDataPart("QuarantinerPaper1File", "QuarantinerPaper1File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        QuarantinerPaper1File))
+                                .build();
+                        break;
+                    case 2:
+                        url += "";
+                        multipartBody = new MultipartBody.Builder("AaB03x")
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("Flag", "3")
+                                .addFormDataPart("CompanyName3", etxCompanyName3.getText().toString())
+                                .addFormDataPart("Corporate3", etxCorporate3.getText().toString())
+                                .addFormDataPart("CorporateIDCardNo3", etxCorporateIDCardNo3.getText().toString())
+                                .addFormDataPart("CompanyContactNo3", etxCompanyContactNo3.getText().toString())
+                                .addFormDataPart("CompanySignUpTime3", etxCompanySignUpTime3.getText().toString())
+                                .addFormDataPart("TradeLocation3", etxTradeLocation3.getText().toString())
+                                .addFormDataPart("LoginName3", etxLoginName3.getText().toString())
+                                .addFormDataPart("LoginPassword3", etxLoginPassword3.getText().toString())
+                                .addFormDataPart("ProcesserPaper1File", "ProcesserPaper1File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProcesserPaper1File))
+                                .addFormDataPart("ProcesserPaper2File", "ProcesserPaper2File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProcesserPaper2File))
+                                .addFormDataPart("ProcesserPaper3File", "ProcesserPaper3File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProcesserPaper3File))
+                                .addFormDataPart("ProcesserPaper4File", "ProcesserPaper4File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProcesserPaper4File))
+                                .addFormDataPart("ProcesserPaper5File", "ProcesserPaper5File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProcesserPaper5File))
+                                .addFormDataPart("ProcesserPaper6File", "ProcesserPaper6File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        ProcesserPaper6File))
+                                .build();
+                        break;
+                    case 3:
+                        url += "";
+                        multipartBody = new MultipartBody.Builder("AaB03x")
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("Flag", "4")
+                                .addFormDataPart("CompanyName4", etxCompanyName4.getText().toString())
+                                .addFormDataPart("Corporate4", etxCorporate4.getText().toString())
+                                .addFormDataPart("CorporateIDCardNo4", etxCorporateIDCardNo4.getText().toString())
+                                .addFormDataPart("CompanyContactNo4", etxCompanyContactNo4.getText().toString())
+                                .addFormDataPart("TradeLocation4", etxTradeLocation4.getText().toString())
+                                .addFormDataPart("LoginName4", etxLoginName4.getText().toString())
+                                .addFormDataPart("LoginPassword4", etxLoginPassword4.getText().toString())
+                                .addFormDataPart("TransporterPaper1File", "TransporterPaper1File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        TransporterPaper1File))
+                                .addFormDataPart("TransporterPaper2File", "TransporterPaper2File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        TransporterPaper2File))
+                                .addFormDataPart("TransporterPaper3File", "TransporterPaper3File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        TransporterPaper3File))
+                                .build();
+                        break;
+                    case 4:
+                        url += "";
+                        multipartBody = new MultipartBody.Builder("AaB03x")
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("Flag", "5")
+                                .addFormDataPart("CompanyName5", etxCompanyName5.getText().toString())
+                                .addFormDataPart("Corporate5", etxCorporate5.getText().toString())
+                                .addFormDataPart("CorporateIDCardNo5", etxCorporateIDCardNo5.getText().toString())
+                                .addFormDataPart("CompanyContactNo5", etxCompanyContactNo5.getText().toString())
+                                .addFormDataPart("TradeLocation5", etxTradeLocation5.getText().toString())
+                                .addFormDataPart("LoginName5", etxLoginName5.getText().toString())
+                                .addFormDataPart("LoginPassword5", etxLoginPassword5.getText().toString())
+                                .addFormDataPart("SellerPaper1File", "SellerPaper1File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        SellerPaper1File))
+                                .addFormDataPart("SellerPaper2File", "SellerPaper2File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        SellerPaper2File))
+                                .addFormDataPart("SellerPaper3File", "SellerPaper3File.jpg", RequestBody.create(
+                                        MediaType.parse("image/*"),
+                                        SellerPaper3File))
+                                .build();
+                        break;
+
                 }
 
-                HttpUtil.sendOKHttp3RequestPOST(url, postData, new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.d(TAG, "onFailure: " + e);
-                    }
+                HttpUtil.sendOKHttpMultipartRequestPOST(
+                        url, multipartBody,
+                        new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Log.d(TAG, "onFailure: " + e.getMessage());
+                            }
 
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        String resStr = response.body().string();
-                        Log.d(TAG, "response.code: " + response.code());
-                        Log.d(TAG, "resStr: " + resStr);
-                    }
-                });
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                String resStr = response.body().string();
+                                Log.d(TAG, "protocol:" + response.protocol() + " code:" + response.code() + " message:" + response.message());
+//                                            Headers headers = response.headers();
+//                                            for (int i = 0; i < headers.size(); i++) {
+//                                                Log.d(TAG, headers.name(i) + ":" + headers.value(i));
+//                                            }
+                                Log.d(TAG, "onResponse: " + resStr);
+                                if (response.code() == 200) {
+
+                                    intent = new Intent(CompanySignupActivity.this, LoginAndSignActivity.class);
+                                    startActivity(intent);
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            btnCompanySignUp.setClickable(true);
+                                            btnCompanySignUp.setText("提交保存");
+                                            btnCompanySignUp.setBackgroundResource(R.drawable.btn_selector);
+                                        }
+                                    });
+                                    finish();
+                                }
+                            }
+                        }
+                );
 
                 break;
             case R.id.btnProducerCamera1:
