@@ -177,6 +177,56 @@ public class CompanySignupActivity extends AppCompatActivity
     private Button btnProcesserCamera6 = null;
     private Button btnProcesserAlbum6 = null;
 
+    //运输公司
+    private EditText etxCompanyName4 = null;
+    private EditText etxCorporate4 = null;
+    private EditText etxCorporateIDCardNo4 = null;
+    private EditText etxCompanyContactNo4 = null;
+    private EditText etxTradeLocation4 = null;
+    private EditText etxLoginName4 = null;
+    private EditText etxLoginPassword4 = null;
+    private EditText etxReLoginPassword4 = null;
+    private ImageView ivTransporterPaper1 = null;
+    private Uri TransporterPaper1Uri = null;
+    private File TransporterPaper1File = null;
+    private Button btnTransporterCamera1 = null;
+    private Button btnTransporterAlbum1 = null;
+    private ImageView ivTransporterPaper2 = null;
+    private Uri TransporterPaper2Uri = null;
+    private File TransporterPaper2File = null;
+    private Button btnTransporterCamera2 = null;
+    private Button btnTransporterAlbum2 = null;
+    private ImageView ivTransporterPaper3 = null;
+    private Uri TransporterPaper3Uri = null;
+    private File TransporterPaper3File = null;
+    private Button btnTransporterCamera3 = null;
+    private Button btnTransporterAlbum3 = null;
+
+    //销售
+    private EditText etxCompanyName5 = null;
+    private EditText etxCorporate5 = null;
+    private EditText etxCorporateIDCardNo5 = null;
+    private EditText etxCompanyContactNo5 = null;
+    private EditText etxTradeLocation5 = null;
+    private EditText etxLoginName5 = null;
+    private EditText etxLoginPassword5 = null;
+    private EditText etxReLoginPassword5 = null;
+    private ImageView ivSellerPaper1 = null;
+    private Uri SellerPaper1Uri = null;
+    private File SellerPaper1File = null;
+    private Button btnSellerCamera1 = null;
+    private Button btnSellerAlbum1 = null;
+    private ImageView ivSellerPaper2 = null;
+    private Uri SellerPaper2Uri = null;
+    private File SellerPaper2File = null;
+    private Button btnSellerCamera2 = null;
+    private Button btnSellerAlbum2 = null;
+    private ImageView ivSellerPaper3 = null;
+    private Uri SellerPaper3Uri = null;
+    private File SellerPaper3File = null;
+    private Button btnSellerCamera3 = null;
+    private Button btnSellerAlbum3 = null;
+
 
     @Override
 
@@ -306,7 +356,55 @@ public class CompanySignupActivity extends AppCompatActivity
         btnProcesserAlbum6 = findViewById(R.id.btnProcesserAlbum6);
         btnProcesserAlbum6.setOnClickListener(this);
 
+        //运输公司
+        etxCompanyName4 = findViewById(R.id.etxCompanyName4);
+        etxCorporate4 = findViewById(R.id.etxCorporate4);
+        etxCorporateIDCardNo4 = findViewById(R.id.etxCorporateIDCardNo4);
+        etxCompanyContactNo4 = findViewById(R.id.etxCompanyContactNo4);
+        etxTradeLocation4 = findViewById(R.id.etxTradeLocation4);
+        etxLoginName4 = findViewById(R.id.etxLoginName4);
+        etxLoginPassword4 = findViewById(R.id.etxLoginPassword4);
+        etxReLoginPassword4 = findViewById(R.id.etxReLoginPassword4);
+        ivTransporterPaper1 = findViewById(R.id.ivTransporterPaper1);
+        btnTransporterCamera1 = findViewById(R.id.btnTransporterCamera1);
+        btnTransporterCamera1.setOnClickListener(this);
+        btnTransporterAlbum1 = findViewById(R.id.btnTransporterAlbum1);
+        btnTransporterAlbum1.setOnClickListener(this);
+        ivTransporterPaper2 = findViewById(R.id.ivTransporterPaper2);
+        btnTransporterCamera2 = findViewById(R.id.btnTransporterCamera2);
+        btnTransporterCamera2.setOnClickListener(this);
+        btnTransporterAlbum2 = findViewById(R.id.btnTransporterAlbum2);
+        btnTransporterAlbum2.setOnClickListener(this);
+        ivTransporterPaper3 = findViewById(R.id.ivTransporterPaper3);
+        btnTransporterCamera3 = findViewById(R.id.btnTransporterCamera3);
+        btnTransporterCamera3.setOnClickListener(this);
+        btnTransporterAlbum3 = findViewById(R.id.btnTransporterAlbum3);
+        btnTransporterAlbum3.setOnClickListener(this);
 
+        //销售
+        etxCompanyName5 = findViewById(R.id.etxCompanyName5);
+        etxCorporate5 = findViewById(R.id.etxCorporate5);
+        etxCorporateIDCardNo5 = findViewById(R.id.etxCorporateIDCardNo5);
+        etxCompanyContactNo5 = findViewById(R.id.etxCompanyContactNo5);
+        etxTradeLocation5 = findViewById(R.id.etxTradeLocation5);
+        etxLoginName5 = findViewById(R.id.etxLoginName5);
+        etxLoginPassword5 = findViewById(R.id.etxLoginPassword5);
+        etxReLoginPassword5 = findViewById(R.id.etxReLoginPassword5);
+        ivSellerPaper1 = findViewById(R.id.ivSellerPaper1);
+        btnSellerCamera1 = findViewById(R.id.btnSellerCamera1);
+        btnSellerCamera1.setOnClickListener(this);
+        btnSellerAlbum1 = findViewById(R.id.btnSellerAlbum1);
+        btnSellerAlbum1.setOnClickListener(this);
+        ivSellerPaper2 = findViewById(R.id.ivSellerPaper2);
+        btnSellerCamera2 = findViewById(R.id.btnSellerCamera2);
+        btnSellerCamera2.setOnClickListener(this);
+        btnSellerAlbum2 = findViewById(R.id.btnSellerAlbum2);
+        btnSellerAlbum2.setOnClickListener(this);
+        ivSellerPaper3 = findViewById(R.id.ivSellerPaper3);
+        btnSellerCamera3 = findViewById(R.id.btnSellerCamera3);
+        btnSellerCamera3.setOnClickListener(this);
+        btnSellerAlbum3 = findViewById(R.id.btnSellerAlbum3);
+        btnSellerAlbum3.setOnClickListener(this);
     }
 
     @Override
@@ -601,6 +699,178 @@ public class CompanySignupActivity extends AppCompatActivity
                     startActivityForResult(intent, PROCESSER_ALBUM_PAPER6);
                 }
                 break;
+
+            case R.id.btnTransporterCamera1:
+                try {
+                    BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
+                        @Override
+                        public void jump(Uri uri, File file, int requestCode) {
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                            TransporterPaper1Uri = uri;
+                            TransporterPaper1File = file;
+                            startActivityForResult(intent, requestCode);
+                        }
+                    }, TRANSPOTER_CAMERA_PAPER1);
+                } catch (Exception e) {
+                    Log.d(TAG, "onClick: " + e);
+                }
+                break;
+            case R.id.btnTransporterAlbum1:
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    startActivityForResult(intent, TRANSPOTER_ALBUM_PAPER1);
+                }
+                break;
+            case R.id.btnTransporterCamera2:
+                try {
+                    BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
+                        @Override
+                        public void jump(Uri uri, File file, int requestCode) {
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                            TransporterPaper2Uri = uri;
+                            TransporterPaper2File = file;
+                            startActivityForResult(intent, requestCode);
+                        }
+                    }, TRANSPOTER_CAMERA_PAPER2);
+                } catch (Exception e) {
+                    Log.d(TAG, "onClick: " + e);
+                }
+                break;
+            case R.id.btnTransporterAlbum2:
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    startActivityForResult(intent, TRANSPOTER_ALBUM_PAPER2);
+                }
+                break;
+            case R.id.btnTransporterCamera3:
+                try {
+                    BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
+                        @Override
+                        public void jump(Uri uri, File file, int requestCode) {
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                            TransporterPaper3Uri = uri;
+                            TransporterPaper3File = file;
+                            startActivityForResult(intent, requestCode);
+                        }
+                    }, TRANSPOTER_CAMERA_PAPER3);
+                } catch (Exception e) {
+                    Log.d(TAG, "onClick: " + e);
+                }
+                break;
+            case R.id.btnTransporterAlbum3:
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    startActivityForResult(intent, TRANSPOTER_ALBUM_PAPER3);
+                }
+                break;
+
+            case R.id.btnSellerCamera1:
+                try {
+                    BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
+                        @Override
+                        public void jump(Uri uri, File file, int requestCode) {
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                            SellerPaper1Uri = uri;
+                            SellerPaper1File = file;
+                            startActivityForResult(intent, requestCode);
+                        }
+                    }, SELLER_CAMERA_PAPER1);
+                } catch (Exception e) {
+                    Log.d(TAG, "onClick: " + e);
+                }
+                break;
+            case R.id.btnSellerAlbum1:
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    startActivityForResult(intent, SELLER_ALBUM_PAPER1);
+                }
+                break;
+
+            case R.id.btnSellerCamera2:
+                try {
+                    BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
+                        @Override
+                        public void jump(Uri uri, File file, int requestCode) {
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                            SellerPaper2Uri = uri;
+                            SellerPaper2File = file;
+                            startActivityForResult(intent, requestCode);
+                        }
+                    }, SELLER_CAMERA_PAPER2);
+                } catch (Exception e) {
+                    Log.d(TAG, "onClick: " + e);
+                }
+                break;
+            case R.id.btnSellerAlbum2:
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    startActivityForResult(intent, SELLER_ALBUM_PAPER2);
+                }
+                break;
+
+            case R.id.btnSellerCamera3:
+                try {
+                    BaseUtil.takeAPhoto(this, String.valueOf(getExternalCacheDir()), new TCCallbackListener() {
+                        @Override
+                        public void jump(Uri uri, File file, int requestCode) {
+                            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                            SellerPaper3Uri = uri;
+                            SellerPaper3File = file;
+                            startActivityForResult(intent, requestCode);
+                        }
+                    }, SELLER_CAMERA_PAPER3);
+                } catch (Exception e) {
+                    Log.d(TAG, "onClick: " + e);
+                }
+                break;
+            case R.id.btnSellerAlbum3:
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent("android.intent.action.GET_CONTENT");
+                    intent.setType("image/*");
+                    startActivityForResult(intent, SELLER_ALBUM_PAPER3);
+                }
+                break;
         }
     }
 
@@ -859,6 +1129,177 @@ public class CompanySignupActivity extends AppCompatActivity
                         Bitmap bitmap = BitmapFactory.decodeStream(
                                 getContentResolver().openInputStream(data.getData()));
                         ivProcesserPaper6.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相册调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case TRANSPOTER_CAMERA_PAPER1:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(TransporterPaper1Uri));
+                        ivTransporterPaper1.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相机调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case TRANSPOTER_ALBUM_PAPER1:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        TransporterPaper1File = new File(BaseUtil.getAlbumImagePath(this, data));
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(data.getData()));
+                        ivTransporterPaper1.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相册调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case TRANSPOTER_CAMERA_PAPER2:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(TransporterPaper2Uri));
+                        ivTransporterPaper2.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相机调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case TRANSPOTER_ALBUM_PAPER2:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        TransporterPaper2File = new File(BaseUtil.getAlbumImagePath(this, data));
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(data.getData()));
+                        ivTransporterPaper2.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相册调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case TRANSPOTER_CAMERA_PAPER3:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(TransporterPaper3Uri));
+                        ivTransporterPaper3.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相机调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case TRANSPOTER_ALBUM_PAPER3:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        TransporterPaper3File = new File(BaseUtil.getAlbumImagePath(this, data));
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(data.getData()));
+                        ivTransporterPaper3.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相册调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+
+            case SELLER_CAMERA_PAPER1:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(SellerPaper1Uri));
+                        ivSellerPaper1.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相机调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case SELLER_ALBUM_PAPER1:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        SellerPaper1File = new File(BaseUtil.getAlbumImagePath(this, data));
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(data.getData()));
+                        ivSellerPaper1.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相册调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case SELLER_CAMERA_PAPER2:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(SellerPaper2Uri));
+                        ivSellerPaper2.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相机调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case SELLER_ALBUM_PAPER2:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        SellerPaper2File = new File(BaseUtil.getAlbumImagePath(this, data));
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(data.getData()));
+                        ivSellerPaper2.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相册调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case SELLER_CAMERA_PAPER3:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(SellerPaper3Uri));
+                        ivSellerPaper3.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        Log.d(TAG, "相机调用: " + e);
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case SELLER_ALBUM_PAPER3:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        Log.d(TAG, "getAlbumImagePath: " + BaseUtil.getAlbumImagePath(this, data));
+                        SellerPaper3File = new File(BaseUtil.getAlbumImagePath(this, data));
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(
+                                getContentResolver().openInputStream(data.getData()));
+                        ivSellerPaper3.setImageBitmap(bitmap);
                     } catch (FileNotFoundException e) {
                         Log.d(TAG, "相册调用: " + e);
                         e.printStackTrace();
