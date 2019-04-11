@@ -181,7 +181,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxCompanyContactNo1"
@@ -189,7 +189,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxCompanySignUpTime1"
@@ -213,7 +213,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <EditText
                             android:id="@+id/etxReLoginPassword1"
@@ -221,7 +221,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
 
                         <EditText
@@ -699,7 +699,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPassword" />
 
                 <EditText
                     android:id="@+id/etxReLoginPassword2"
@@ -707,7 +707,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPassword" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -942,7 +942,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxCompanyContactNo3"
@@ -950,7 +950,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxCompanySignUpTime3"
@@ -982,7 +982,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <EditText
                             android:id="@+id/etxReLoginPassword3"
@@ -990,7 +990,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1397,7 +1397,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxCompanyContactNo4"
@@ -1405,7 +1405,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxTradeLocation4"
@@ -1429,7 +1429,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <EditText
                             android:id="@+id/etxReLoginPassword4"
@@ -1437,7 +1437,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1722,7 +1722,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxCompanyContactNo5"
@@ -1730,7 +1730,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="number" />
 
                         <EditText
                             android:id="@+id/etxTradeLocation5"
@@ -1754,7 +1754,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <EditText
                             android:id="@+id/etxReLoginPassword5"
@@ -1762,7 +1762,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPassword" />
 
                         <LinearLayout
                             android:layout_width="match_parent"

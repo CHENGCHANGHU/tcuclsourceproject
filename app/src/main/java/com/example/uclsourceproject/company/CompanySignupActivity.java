@@ -35,6 +35,9 @@ import com.example.uclsourceproject.loginAndSign.LoginAndSignActivity;
 import com.example.uclsourceproject.produce.ProducerMessCompleteActivity;
 import com.example.uclsourceproject.produce.ProductionStateActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -443,7 +446,7 @@ public class CompanySignupActivity extends AppCompatActivity
                                 .addFormDataPart("CorporateContactNo", etxCompanyContactNo1.getText().toString())
                                 .addFormDataPart("RegisterTime", etxCompanySignUpTime1.getText().toString())
                                 .addFormDataPart("LoginName", etxLoginName1.getText().toString())
-                                .addFormDataPart("Password", etxLoginPassword1.getText().toString())
+                                .addFormDataPart("PASSWORD", etxLoginPassword1.getText().toString())
                                 .addFormDataPart("OperatingPlace", etxTradeLocation1.getText().toString())
 //                                .addFormDataPart("ProducerPaper1File", "ProducerPaper1File")
 //                                .addFormDataPart("ProducerPaper2File", "ProducerPaper2File")
@@ -462,7 +465,7 @@ public class CompanySignupActivity extends AppCompatActivity
                                 .addFormDataPart("CompanyName", etxCompanyName2.getText().toString())
                                 .addFormDataPart("OperatingPlace", etxTradeLocation2.getText().toString())
                                 .addFormDataPart("LoginName", etxLoginName2.getText().toString())
-                                .addFormDataPart("Password", etxLoginPassword2.getText().toString())
+                                .addFormDataPart("PASSWORD", etxLoginPassword2.getText().toString())
                                 .addFormDataPart("AnimalEpidemicPCSrc", "QuarantinerPaper1File.jpg", RequestBody.create(
                                         MediaType.parse("image/*"),
                                         QuarantinerPaper1File))
@@ -479,7 +482,7 @@ public class CompanySignupActivity extends AppCompatActivity
                                 .addFormDataPart("RegisterTime", etxCompanySignUpTime3.getText().toString())
                                 .addFormDataPart("OperatingPlace", etxTradeLocation3.getText().toString())
                                 .addFormDataPart("LoginName", etxLoginName3.getText().toString())
-                                .addFormDataPart("Password", etxLoginPassword3.getText().toString())
+                                .addFormDataPart("PASSWORD", etxLoginPassword3.getText().toString())
                                 .addFormDataPart("OrganizationCodeCertificateSrc", "ProcesserPaper1File.jpg", RequestBody.create(
                                         MediaType.parse("image/*"),
                                         ProcesserPaper1File))
@@ -510,7 +513,7 @@ public class CompanySignupActivity extends AppCompatActivity
                                 .addFormDataPart("CorporateContactNo", etxCompanyContactNo4.getText().toString())
                                 .addFormDataPart("OperatingPlace", etxTradeLocation4.getText().toString())
                                 .addFormDataPart("LoginName", etxLoginName4.getText().toString())
-                                .addFormDataPart("Password", etxLoginPassword4.getText().toString())
+                                .addFormDataPart("PASSWORD", etxLoginPassword4.getText().toString())
                                 .addFormDataPart("OrganizationCodeCertificateSrc", "TransporterPaper1File.jpg", RequestBody.create(
                                         MediaType.parse("image/*"),
                                         TransporterPaper1File))
@@ -532,7 +535,7 @@ public class CompanySignupActivity extends AppCompatActivity
                                 .addFormDataPart("CorporateContactNo", etxCompanyContactNo5.getText().toString())
                                 .addFormDataPart("OperatingPlace", etxTradeLocation5.getText().toString())
                                 .addFormDataPart("LoginName", etxLoginName5.getText().toString())
-                                .addFormDataPart("Password", etxLoginPassword5.getText().toString())
+                                .addFormDataPart("PASSWORD", etxLoginPassword5.getText().toString())
                                 .addFormDataPart("OrganizationCodeCertificateSrc", "SellerPaper1File.jpg", RequestBody.create(
                                         MediaType.parse("image/*"),
                                         SellerPaper1File))
@@ -552,18 +555,21 @@ public class CompanySignupActivity extends AppCompatActivity
                         new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
-                                Log.d(TAG, "onFailure: " + e.getMessage());
+                                Log.e(TAG, "onFailure: " + e.getMessage());
                             }
 
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
                                 String resStr = response.body().string();
                                 Log.d(TAG, "protocol:" + response.protocol() + " code:" + response.code() + " message:" + response.message());
-//                                            Headers headers = response.headers();
-//                                            for (int i = 0; i < headers.size(); i++) {
-//                                                Log.d(TAG, headers.name(i) + ":" + headers.value(i));
-//                                            }
+
                                 Log.d(TAG, "onResponse: " + resStr);
+                                try {
+                                    JSONObject o=new JSONObject(resStr);
+                                    Log.d(TAG, "onResponse: "+o);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                                 if (response.code() == 200) {
 
                                     intent = new Intent(CompanySignupActivity.this, LoginAndSignActivity.class);

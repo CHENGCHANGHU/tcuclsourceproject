@@ -31,6 +31,9 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoginAndSignActivity extends AppCompatActivity
@@ -201,17 +204,22 @@ public class LoginAndSignActivity extends AppCompatActivity
         Log.d(TAG, "companyFlag: " + companyFlag);
         final String contactNo = etxContactNo.getText().toString();
         final String password = etxPassword.getText().toString();
-
+        Log.d(TAG, "logIn: " + contactNo + "::::" + password);
+        Log.d(TAG, "JsonUtil.getJSON: " + JsonUtil.getJSON(
+                "name", contactNo,
+                "password", password
+        ));
 
         if (companyFlag) {
             //企业组织登录操作
             Log.d(TAG, "企业组织用户登录操作");
 
-            HttpUtil.sendOKHttp3RequestPOST(HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/login?characterFlag=0",
-                    JsonUtil.getJSON(
-                            "ContactNo", Integer.parseInt(contactNo),
-                            "Password", password
-                    ),
+            HttpUtil.sendOKHttpMultipartRequestPOST(HttpUtil.BASEURL_COMPANY + "/login.action",
+                    new MultipartBody.Builder("AaB03x")
+                            .setType(MultipartBody.FORM)
+                            .addFormDataPart("name", contactNo)
+                            .addFormDataPart("password", password)
+                            .build(),
                     new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
@@ -223,15 +231,78 @@ public class LoginAndSignActivity extends AppCompatActivity
                             String resStr = response.body().string();
                             Log.d(TAG, "response.code: " + response.code());
                             Log.d(TAG, "企业组织用户登录操作resStr: " + resStr);
-
-                            intent = new Intent(LoginAndSignActivity.this, CompanyManagerActivity.class);
-                            intent.putExtra("title", "企业组织管理");
-                            handlePreference(companyFlag, contactNo, password, characterFlags, "");
-
-                            startActivity(intent);
-                            finish();
+                            try {
+                                JSONObject resJson = new JSONObject(resStr);
+                                if (!resJson.getString("status").equals("error")) {
+                                    intent = new Intent(LoginAndSignActivity.this, CompanyManagerActivity.class);
+                                    intent.putExtra("title", "企业组织管理");
+                                    handlePreference(companyFlag, contactNo, password, characterFlags, "");
+                                    prefEditor = pref.edit();
+                                    prefEditor.putString("companyName", contactNo);
+                                    prefEditor.putString("companyCharacterFlag", resJson.getString("status"));
+                                    prefEditor.apply();
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(LoginAndSignActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            } catch (JSONException e) {
+//                                e.printStackTrace();
+                            }
                         }
                     });
+
+//            HttpUtil.sendOKHttp3RequestPOST(HttpUtil.BASEURL_COMPANY + "/login.action",
+//                    JsonUtil.getJSON(
+//                            "name", contactNo,
+//                            "password", password
+//                    )
+////                    "{\"name\":\"test\",\"password\":\"666\"}"
+//                    ,
+//                    new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//                            Log.d(TAG, "onFailure: " + e.toString());
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//                            String resStr = response.body().string();
+//                            Log.d(TAG, "response.code: " + response.code());
+//                            Log.d(TAG, "企业组织用户登录操作resStr: " + resStr);
+//                            try {
+//                                JSONObject resJson = new JSONObject(resStr);
+//                                if (!resJson.getString("status").equals("error")) {
+//                                    intent = new Intent(LoginAndSignActivity.this, CompanyManagerActivity.class);
+//                                    intent.putExtra("title", "企业组织管理");
+//                                    handlePreference(companyFlag, contactNo, password, characterFlags, "");
+//                                    prefEditor = pref.edit();
+//                                    prefEditor.putString("companyName", contactNo);
+//                                    prefEditor.apply();
+//                                    startActivity(intent);
+//                                    finish();
+//                                } else {
+//                                    runOnUiThread(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            Toast.makeText(LoginAndSignActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    });
+//                                }
+//
+//
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//
+//
+//                        }
+//                    });
 
 
         } else {

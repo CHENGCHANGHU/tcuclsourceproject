@@ -105,7 +105,7 @@ public class ProductionStateActivity extends AppCompatActivity
                     public void onResponse(Call call, Response response) throws IOException {
                         String resStr = response.body().string();
                         Log.d(TAG, "code: " + response.code() + "resStr: " + resStr);
-                        ArrayList<JSONObject> js = JsonUtil.getJSONArray(resStr);
+                        ArrayList<JSONObject> js = JsonUtil.getJSONArray(resStr, "\\}\\{");
                         Log.d(TAG, "js.toString: " + js.toString());
                         //json嵌套解析
 
