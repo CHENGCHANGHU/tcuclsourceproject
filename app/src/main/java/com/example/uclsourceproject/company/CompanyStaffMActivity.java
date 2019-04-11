@@ -12,18 +12,17 @@ import android.widget.TextView;
 
 import com.example.uclsourceproject.JsonUtil;
 import com.example.uclsourceproject.R;
-import com.example.uclsourceproject.UCLadapters.ProductionStateAdapter;
 import com.example.uclsourceproject.UCLadapters.StaffAdapter;
-import com.example.uclsourceproject.UCLclasses.ProductionState;
 import com.example.uclsourceproject.UCLclasses.Staff;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CompanyStaffMActivity extends AppCompatActivity
-        implements View.OnClickListener, ProductionStateAdapter.OnRecycleViewItemClickListener {
+        implements View.OnClickListener, StaffAdapter.OnRecycleViewItemClickListener {
     private static final String TAG = "tigercheng";
     private Intent intent = null;
 
@@ -31,6 +30,7 @@ public class CompanyStaffMActivity extends AppCompatActivity
     private String staffesStr = "";
 
     private RecyclerView rv_staff = null;
+    private List<Staff> staffList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +50,19 @@ public class CompanyStaffMActivity extends AppCompatActivity
         rv_staff = findViewById(R.id.rv_staff);
 
         staffJsonStr = intent.getStringExtra("staff");
-        Log.d(TAG, "staffJsonStr: " + staffJsonStr);
+//        Log.d(TAG, "staffJsonStr: " + staffJsonStr);
         try {
             JSONObject staffJson = new JSONObject(staffJsonStr);
             staffesStr = staffJson.getString("json");
-            Log.d(TAG, "staffesStr: " + staffesStr);
-            Log.d(TAG, "staffesStr.replace: " +
-                    JsonUtil.getJSONArray(
-                            staffesStr.replace("[", "").replace("]", ""),
-                            "\\},\\{"));
+//            Log.d(TAG, "staffesStr: " + staffesStr);
+//            Log.d(TAG, "staffesStr.replace: " +
+//                    JsonUtil.getJSONArray(
+//                            staffesStr.replace("[", "").replace("]", ""),
+//                            "\\},\\{"));
             ArrayList<JSONObject> staffes = JsonUtil.getJSONArray(
                     staffesStr.replace("[", "").replace("]", ""),
                     "\\},\\{");
 
-            ArrayList<Staff> staffList = new ArrayList<>();
             for (int i = 0; i < staffes.size(); i++) {
                 Log.d(TAG, "staffes[" + i + "]: " + staffes.get(i));
                 Staff _s = new Staff(
@@ -73,15 +72,24 @@ public class CompanyStaffMActivity extends AppCompatActivity
                         staffes.get(i).getString("CNo")
                 );
                 staffList.add(_s);
+                Log.d(TAG, "_s.getStaffName: " + _s.getStaffName());
             }
 
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             rv_staff.setLayoutManager(layoutManager);
 
             StaffAdapter adapter = new StaffAdapter(staffList);
+            StaffAdapter adapter1 = new StaffAdapter(new ArrayList<Staff>());
+
             adapter.setOnRecycleViewItemClickListener(this);
 
+            Log.d(TAG, "staffList: " + staffList.size() + "_______" + staffList);
+            Log.d(TAG, "adapter: " + adapter);
+
+            StaffAdapter adapter2 = new StaffAdapter(staffList);
+
             rv_staff.setAdapter(adapter);
+            Log.d(TAG, "rv_staff.setAdapter(: ");
         } catch (JSONException e) {
             e.printStackTrace();
         }

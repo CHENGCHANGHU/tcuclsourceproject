@@ -2,22 +2,23 @@ package com.example.uclsourceproject.UCLadapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.uclsourceproject.R;
-import com.example.uclsourceproject.UCLclasses.ProductionState;
 import com.example.uclsourceproject.UCLclasses.Staff;
 
 import java.util.List;
 
 public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> {
+    private static final String TAG = "tigercheng";
 
     private List<Staff> mStaffList;
 
-    private ProductionStateAdapter.OnRecycleViewItemClickListener onRecycleViewItemClickListener;
+    private StaffAdapter.OnRecycleViewItemClickListener onRecycleViewItemClickListener;
 
     public StaffAdapter(List<Staff> mStaffList) {
         this.mStaffList = mStaffList;
@@ -25,10 +26,11 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
 
     @NonNull
     @Override
-    public StaffAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        Log.d(TAG, "onCreateViewHolder: -------------------------");
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.staff_item, viewGroup, false);
-        StaffAdapter.ViewHolder holder = new StaffAdapter.ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -51,7 +53,8 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull StaffAdapter.ViewHolder viewHolder, int i) {
-//i--position
+        Log.d(TAG, "onBindViewHolder: --------------------------");
+        //i--position
         Staff _s = mStaffList.get(i);
         viewHolder.tvStaffID.setText(String.valueOf(_s.getStaffID()));
         viewHolder.tvStaffName.setText(_s.getStaffName());
@@ -64,7 +67,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mStaffList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -96,7 +99,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
 
     //提供设置点击事件监听器
     public void setOnRecycleViewItemClickListener(
-            ProductionStateAdapter.OnRecycleViewItemClickListener itemClickListener) {
+            StaffAdapter.OnRecycleViewItemClickListener itemClickListener) {
         onRecycleViewItemClickListener = itemClickListener;
     }
 }

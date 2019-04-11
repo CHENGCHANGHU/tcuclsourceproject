@@ -2,6 +2,7 @@ package com.example.uclsourceproject.UCLadapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class ProductionStateAdapter
     @Override
     public ProductionStateAdapter.ViewHolder onCreateViewHolder(
             @NonNull ViewGroup viewGroup, int i) {
+        Log.d("tigercheng", "onCreateViewHolder: ++++++++++++++++++++++++++++++");
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.production_state_item, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
