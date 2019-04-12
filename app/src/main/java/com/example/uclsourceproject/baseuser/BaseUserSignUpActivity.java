@@ -122,7 +122,7 @@ public class BaseUserSignUpActivity extends AppCompatActivity
                 HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/register?CharacterFlag=1",
                 JsonUtil.getJSON(
                         "ConsumerName", userName,
-                        "ContactNo", Integer.parseInt(contact),
+                        "ContactNo", contact,
                         "Password", password
                 ),
                 new Callback() {

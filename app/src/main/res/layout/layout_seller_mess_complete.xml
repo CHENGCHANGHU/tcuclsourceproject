@@ -70,13 +70,13 @@
             android:weightSum="8">
 
             <EditText
-                android:id="@+id/editText18"
+                android:id="@+id/etxIDCardNo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="身份证号"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -120,7 +120,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editText21"
+                android:id="@+id/etxCompanyName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -136,14 +136,14 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/ivIDCard1"
+                    android:id="@+id/ivCertificate1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/certificates" />
 
                 <Button
-                    android:id="@+id/btnPhotoIDCard1"
+                    android:id="@+id/btnPhotoCertificate1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -156,7 +156,7 @@
                     android:textSize="14sp" />
 
                 <Button
-                    android:id="@+id/btnAlbumIDCard1"
+                    android:id="@+id/btnAlbumCertificate1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"

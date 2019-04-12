@@ -18,19 +18,33 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.uclsourceproject.BaseUtil;
+import com.example.uclsourceproject.HttpUtil;
+import com.example.uclsourceproject.JsonUtil;
 import com.example.uclsourceproject.R;
 import com.example.uclsourceproject.TCCallbackListener;
 import com.example.uclsourceproject.produce.ProducerMessCompleteActivity;
 import com.example.uclsourceproject.produce.ProductionStateActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class QuarantinerMessCompleteActivity extends AppCompatActivity
         implements View.OnClickListener {
@@ -45,7 +59,6 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
     private static final int ALBUM_SIGNINGVETERINARYCERTIFICATE = 6;
     private static final int PHOTO_LICENSEDVETERINARYQC = 7;
     private static final int ALBUM_LICENSEDVETERINARYQC = 8;
-
 
     private Intent intent = null;
 
@@ -68,6 +81,14 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
     private Uri certificatesUri = null;
     private Uri signingveterinarycertificateUri = null;
     private Uri licensedveterinaryqcUri = null;
+
+    private File idcardFile = null;
+    private File certificatesFile = null;
+    private File signingveterinarycertificateFile = null;
+    private File licensedveterinaryqcFile = null;
+
+    private EditText etxIDCardNo = null;
+    private EditText etxCompanyName = null;
 
     private SharedPreferences pref = null;
     private SharedPreferences.Editor prefEditor = null;
@@ -115,6 +136,9 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
 
         btnQuarantinerSave = findViewById(R.id.btnQuarantinerSave);
         btnQuarantinerSave.setOnClickListener(this);
+
+        etxIDCardNo = findViewById(R.id.etxIDCardNo);
+        etxCompanyName = findViewById(R.id.etxCompanyName);
     }
 
     @Override
@@ -127,6 +151,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         idcardUri = uri;
+                        idcardFile = file;
                         startActivityForResult(intent, requestCode);
                     }
                 }, PHOTO_IDCARD);
@@ -139,6 +164,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         certificatesUri = uri;
+                        certificatesFile = file;
                         startActivityForResult(intent, requestCode);
                     }
                 }, PHOTO_CERTIFICATES);
@@ -151,6 +177,7 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         signingveterinarycertificateUri = uri;
+                        signingveterinarycertificateFile = file;
                         startActivityForResult(intent, requestCode);
                     }
                 }, PHOTO_SIGNINGVETERINARYCERTIFICATE);
@@ -163,6 +190,8 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
                         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                         licensedveterinaryqcUri = uri;
+
+                        licensedveterinaryqcFile = file;
                         startActivityForResult(intent, requestCode);
                     }
                 }, PHOTO_LICENSEDVETERINARYQC);
@@ -221,19 +250,106 @@ public class QuarantinerMessCompleteActivity extends AppCompatActivity
                 break;
 
             case R.id.btnQuarantinerSave:
+                HttpUtil.sendOKHttp3RequestPOST(
+                        HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/fulfil?CharacterFlag=1",
+                        JsonUtil.getJSON(
+                                "ConsumerId", pref.getString("id", "id"),
+                                "IDNo", etxIDCardNo.getText().toString(),
+                                "CompanyName", etxCompanyName.getText().toString()
+                        ), new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Log.d(TAG, "onFailure: " + e);
+                            }
 
-                prefEditor = pref.edit();
-                characterFlags = characterFlags | 0b010000;
-                prefEditor.putInt("characterFlags", characterFlags);
-                prefEditor.apply();
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                final String resStr = response.body().string();
+                                Log.d(TAG, "response.code: " + response.code());
+                                Log.d(TAG, "Quarantiner信息完善resStr: " + resStr);
+                                try {
+                                    JSONObject resJson = null;
+                                    resJson = new JSONObject(resStr);
+                                    Log.d(TAG, "resJson: " + resJson.toString());
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            btnQuarantinerSave.setClickable(false);
+                                            btnQuarantinerSave.setText("正在提交");
+                                            btnQuarantinerSave.setBackgroundResource(R.drawable.btn_bg_unclicked);
+                                        }
+                                    });
+                                    HttpUtil.sendOKHttpMultipartRequestPOST(
+                                            HttpUtil.BASEURL_LOGIN_SIGN_PRODUCE + "/user/img_fulfil",
+                                            new MultipartBody.Builder("AaB03x")
+//                                    MultipartBody body = new MultipartBody.Builder("")
+                                                    .setType(MultipartBody.FORM)
+                                                    .addFormDataPart("imgID", "idcardFile.jpg", RequestBody.create(
+                                                            MediaType.parse("image/*"),
+                                                            idcardFile))
+                                                    .addFormDataPart("imgwork", "certificatesFile.jpg", RequestBody.create(
+                                                            MediaType.parse("image/*"),
+                                                            certificatesFile))
+                                                    .addFormDataPart("imgquality1", "signingveterinarycertificateFile.jpg", RequestBody.create(
+                                                            MediaType.parse("image/*"),
+                                                            signingveterinarycertificateFile))
+                                                    .addFormDataPart("imgquality2", "licensedveterinaryqcFile.jpg", RequestBody.create(
+                                                            MediaType.parse("image/*"),
+                                                            licensedveterinaryqcFile))
+                                                    .addFormDataPart("ConsumerId", pref.getString("id", "id"))
+                                                    .addFormDataPart("CharacterFlag", "1")
+                                                    .build(),
+                                            new Callback() {
+                                                @Override
+                                                public void onFailure(Call call, IOException e) {
+                                                    Log.d(TAG, "onFailure: " + e.getMessage());
+                                                }
 
-                if (BaseUtil.isCompleted(pref.getInt("characterFlags", 0b000000), 2)) {
-                    Toast.makeText(this, "信息注册成功", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(QuarantinerMessCompleteActivity.this, QuarantineResInActivity.class);
-                    intent.putExtra("title", "检疫结果录入");
-                    startActivity(intent);
-                    finish();
-                }
+                                                @Override
+                                                public void onResponse(Call call, Response response) throws IOException {
+                                                    String resStr = response.body().string();
+                                                    Log.d(TAG, "protocol:" + response.protocol() + " code:" + response.code() + " message:" + response.message());
+
+                                                    Log.d(TAG, "onResponse: " + resStr);
+                                                    if (response.code() == 200) {
+
+                                                        prefEditor = pref.edit();
+                                                        characterFlags = characterFlags | 0b010000;
+                                                        prefEditor.putInt("characterFlags", characterFlags);
+                                                        prefEditor.apply();
+
+                                                        intent = new Intent(QuarantinerMessCompleteActivity.this, QuarantineResInActivity.class);
+                                                        intent.putExtra("title", "检疫结果录入");
+                                                        startActivity(intent);
+                                                        finish();
+                                                        runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                btnQuarantinerSave.setClickable(true);
+                                                                btnQuarantinerSave.setText("提交保存");
+                                                                btnQuarantinerSave.setBackgroundResource(R.drawable.btn_selector);
+                                                            }
+                                                        });
+                                                        finish();
+                                                    }
+                                                }
+                                            }
+                                    );
+                                } catch (JSONException e) {
+                                    Log.d(TAG, "JSONException: " + e.toString());
+//                                etxContact.setText("");
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(QuarantinerMessCompleteActivity.this, resStr, Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                );
+
                 break;
         }
     }

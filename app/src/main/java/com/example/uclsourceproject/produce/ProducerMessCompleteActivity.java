@@ -275,6 +275,10 @@ public class ProducerMessCompleteActivity extends AppCompatActivity
 //                                            }
                                                     Log.d(TAG, "onResponse: " + resStr);
                                                     if (response.code() == 200) {
+                                                        prefEditor = pref.edit();
+                                                        characterFlags = characterFlags | 0b100000;
+                                                        prefEditor.putInt("characterFlags", characterFlags);
+                                                        prefEditor.apply();
 
                                                         intent = new Intent(ProducerMessCompleteActivity.this, ProductionStateActivity.class);
                                                         intent.putExtra("title", "羊状态信息查询");

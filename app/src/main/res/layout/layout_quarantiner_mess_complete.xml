@@ -86,7 +86,7 @@
             android:weightSum="8">
 
             <EditText
-                android:id="@+id/editText18"
+                android:id="@+id/etxIDCardNo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -136,7 +136,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editText21"
+                android:id="@+id/etxCompanyName"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".company.CompanyStaffMActivity"></activity>
+        <activity android:name=".company.CompanyMessageActivity" />
+        <activity android:name=".company.CompanyStaffMActivity" />
         <activity android:name=".process.ProcesserMessCompleteActivity" />
         <activity android:name=".baseuser.BaseUserSignUpActivity" />
         <activity android:name=".baseuser.BaseUserActivity" />
@@ -46,7 +47,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path"></meta-data>
+                android:resource="@xml/file_path" />
         </provider>
     </application>
 
