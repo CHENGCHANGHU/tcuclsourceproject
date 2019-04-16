@@ -319,273 +319,273 @@
             </ScrollView>
 
             <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="2"-->
-                <!--android:orientation="vertical"-->
-                <!--android:weightSum="12">-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="2"-->
+            <!--android:orientation="vertical"-->
+            <!--android:weightSum="12">-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView44"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="企业名称"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView44"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="企业名称"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView46"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="企业法人"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView46"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="企业法人"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView47"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="企业法人身份证"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView47"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="企业法人身份证"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView48"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="企业联系方式"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView48"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="企业联系方式"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView69"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="企业注册时间"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView69"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="企业注册时间"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView109"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="登录名"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView109"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="登录名"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView110"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="登录密码"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView110"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="登录密码"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView111"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="确认密码"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView111"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="确认密码"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView70"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="经营地址"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView70"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="经营地址"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView73"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="营业执照"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView73"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="营业执照"-->
+            <!--android:textSize="12sp" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textView75"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="动物防疫条件合格证"-->
-                    <!--android:textSize="12sp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/textView75"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="动物防疫条件合格证"-->
+            <!--android:textSize="12sp" />-->
             <!--</LinearLayout>-->
 
             <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="4.5"-->
-                <!--android:orientation="vertical"-->
-                <!--android:weightSum="12">-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="4.5"-->
+            <!--android:orientation="vertical"-->
+            <!--android:weightSum="12">-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxCompanyName1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxCompanyName1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxCorporate1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxCorporate1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxCoporateIDCardNo1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxCoporateIDCardNo1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxCompanyContactNo1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxCompanyContactNo1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxCompanySignUpTime1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxCompanySignUpTime1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxLoginName1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxLoginName1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxLoginPassword1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxLoginPassword1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxReLoginPassword1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxReLoginPassword1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
 
-                <!--<EditText-->
-                    <!--android:id="@+id/etxTradeLocation1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:ems="10"-->
-                    <!--android:inputType="textPersonName" />-->
+            <!--<EditText-->
+            <!--android:id="@+id/etxTradeLocation1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:ems="10"-->
+            <!--android:inputType="textPersonName" />-->
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:orientation="horizontal">-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
 
-                    <!--<ImageView-->
-                        <!--android:id="@+id/ivProducerPaper1"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--app:srcCompat="@drawable/paper" />-->
+            <!--<ImageView-->
+            <!--android:id="@+id/ivProducerPaper1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--app:srcCompat="@drawable/paper" />-->
 
-                    <!--<Button-->
-                        <!--android:id="@+id/btnProducerCamera1"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--android:background="@drawable/btn_selector"-->
-                        <!--android:letterSpacing="0.2"-->
-                        <!--android:minWidth="40dp"-->
-                        <!--android:minHeight="20dp"-->
-                        <!--android:text="拍照"-->
-                        <!--android:textColor="#fff"-->
-                        <!--android:textSize="14sp" />-->
+            <!--<Button-->
+            <!--android:id="@+id/btnProducerCamera1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:background="@drawable/btn_selector"-->
+            <!--android:letterSpacing="0.2"-->
+            <!--android:minWidth="40dp"-->
+            <!--android:minHeight="20dp"-->
+            <!--android:text="拍照"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="14sp" />-->
 
-                    <!--<Button-->
-                        <!--android:id="@+id/btnProducerAlbum1"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="20dp"-->
-                        <!--android:background="@drawable/btn_selector"-->
-                        <!--android:letterSpacing="0.2"-->
-                        <!--android:minWidth="40dp"-->
-                        <!--android:minHeight="20dp"-->
-                        <!--android:text="相册"-->
-                        <!--android:textColor="#fff"-->
-                        <!--android:textSize="14sp" />-->
-                <!--</LinearLayout>-->
+            <!--<Button-->
+            <!--android:id="@+id/btnProducerAlbum1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:background="@drawable/btn_selector"-->
+            <!--android:letterSpacing="0.2"-->
+            <!--android:minWidth="40dp"-->
+            <!--android:minHeight="20dp"-->
+            <!--android:text="相册"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="14sp" />-->
+            <!--</LinearLayout>-->
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center"-->
-                    <!--android:orientation="horizontal">-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
 
-                    <!--<ImageView-->
-                        <!--android:id="@+id/ivProducerPaper2"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--app:srcCompat="@drawable/paper" />-->
+            <!--<ImageView-->
+            <!--android:id="@+id/ivProducerPaper2"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--app:srcCompat="@drawable/paper" />-->
 
-                    <!--<Button-->
-                        <!--android:id="@+id/btnProducerCamera2"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--android:background="@drawable/btn_selector"-->
-                        <!--android:letterSpacing="0.2"-->
-                        <!--android:minWidth="40dp"-->
-                        <!--android:minHeight="20dp"-->
-                        <!--android:text="拍照"-->
-                        <!--android:textColor="#fff"-->
-                        <!--android:textSize="14sp" />-->
+            <!--<Button-->
+            <!--android:id="@+id/btnProducerCamera2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:background="@drawable/btn_selector"-->
+            <!--android:letterSpacing="0.2"-->
+            <!--android:minWidth="40dp"-->
+            <!--android:minHeight="20dp"-->
+            <!--android:text="拍照"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="14sp" />-->
 
-                    <!--<Button-->
-                        <!--android:id="@+id/btnProducerAlbum2"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="20dp"-->
-                        <!--android:background="@drawable/btn_selector"-->
-                        <!--android:letterSpacing="0.2"-->
-                        <!--android:minWidth="40dp"-->
-                        <!--android:minHeight="20dp"-->
-                        <!--android:text="相册"-->
-                        <!--android:textColor="#fff"-->
-                        <!--android:textSize="14sp" />-->
-                <!--</LinearLayout>-->
+            <!--<Button-->
+            <!--android:id="@+id/btnProducerAlbum2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:background="@drawable/btn_selector"-->
+            <!--android:letterSpacing="0.2"-->
+            <!--android:minWidth="40dp"-->
+            <!--android:minHeight="20dp"-->
+            <!--android:text="相册"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="14sp" />-->
+            <!--</LinearLayout>-->
 
             <!--</LinearLayout>-->
         </LinearLayout>
@@ -774,8 +774,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:weightSum="9"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="9">
 
                         <TextView
                             android:id="@+id/textView82"
@@ -917,8 +917,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4.5"
-                        android:weightSum="9"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="9">
 
                         <EditText
                             android:id="@+id/etxCompanyName3"
@@ -1590,8 +1590,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:weightSum="12"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="12">
 
                         <TextView
                             android:id="@+id/textView101"
@@ -1697,8 +1697,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4.5"
-                        android:weightSum="12"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="12">
 
                         <EditText
                             android:id="@+id/etxCompanyName5"
