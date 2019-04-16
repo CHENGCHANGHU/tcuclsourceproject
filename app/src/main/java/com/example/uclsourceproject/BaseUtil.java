@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.security.auth.callback.Callback;
 
@@ -315,6 +317,12 @@ public class BaseUtil {
 //                date = String.format("%d年%02d月%02d日", year, monthOfYear + 1, dayOfMonth);
             }
         }, year, month, day).show();
+    }
+
+    public static String getCurrentTime() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
     }
 
 }
