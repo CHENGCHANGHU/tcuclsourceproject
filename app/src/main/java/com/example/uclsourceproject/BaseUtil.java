@@ -303,7 +303,7 @@ public class BaseUtil {
     }
 
     public static void setDate(Context context, final EditText editText) {
-        int year = 2000, month = 1, day = 1;
+        int year = 2000, month = 0, day = 1;
 //        String date = "";
         new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
 
