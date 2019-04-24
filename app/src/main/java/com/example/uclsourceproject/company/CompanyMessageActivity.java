@@ -144,6 +144,7 @@ public class CompanyMessageActivity extends AppCompatActivity {
             companyMess = mess.getString("jsonObject");
             mess = new JSONObject(companyMess);
             flag = Integer.valueOf(mess.getString("Flag"));
+            Log.d(TAG, "mess: "+mess);
             setVisible(flag);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -158,6 +159,7 @@ public class CompanyMessageActivity extends AppCompatActivity {
                 edit(etxCompanyName1, "CompanyName");
                 edit(etxCorporate1, "CorporateName");
                 edit(etxCompanySignUpTime1, "RegisterTime");
+                Log.d(TAG, "CorporateIDNo++++++++++: "+mess.getString("CorporateIDNo"));
                 edit(etxCorporateIDCardNo1, "CorporateIDNo");
                 edit(etxTradeLocation1, "OperatingPlace");
                 edit(etxLoginName1, "LoginName");
