@@ -20,7 +20,7 @@ public class HttpUtil {
     public static String BASEURL_LOGIN_SIGN_PRODUCE = "http://223.3.83.51:8000";
     public static String BASEURL_SELL = "http://223.3.79.119:8000";
     public static String BASEURL_TRANSPORT = "http://223.3.89.141:8000";
-    public static String BASEURL_COMPANY = "http://223.3.79.135:8089";
+    public static String BASEURL_COMPANY = "http://223.3.89.230:8089";
 
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");

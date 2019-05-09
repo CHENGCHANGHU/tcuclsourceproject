@@ -207,6 +207,7 @@
     </ScrollView>
 
     <ScrollView
+        android:visibility="invisible"
         android:id="@+id/sv_quarantiner"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -327,6 +328,7 @@
     </ScrollView>
 
     <ScrollView
+        android:visibility="invisible"
         android:id="@+id/sv_processer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -603,6 +605,7 @@
     </ScrollView>
 
     <ScrollView
+        android:visibility="invisible"
         android:id="@+id/sv_transporter"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -816,6 +819,7 @@
     </ScrollView>
 
     <ScrollView
+        android:visibility="invisible"
         android:id="@+id/sv_seller"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

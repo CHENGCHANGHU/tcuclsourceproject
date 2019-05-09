@@ -144,7 +144,7 @@ public class CompanyMessageActivity extends AppCompatActivity {
             companyMess = mess.getString("jsonObject");
             mess = new JSONObject(companyMess);
             flag = Integer.valueOf(mess.getString("Flag"));
-            Log.d(TAG, "mess: "+mess);
+            Log.d(TAG, "mess: " + mess);
             setVisible(flag);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -159,7 +159,7 @@ public class CompanyMessageActivity extends AppCompatActivity {
                 edit(etxCompanyName1, "CompanyName");
                 edit(etxCorporate1, "CorporateName");
                 edit(etxCompanySignUpTime1, "RegisterTime");
-                Log.d(TAG, "CorporateIDNo++++++++++: "+mess.getString("CorporateIDNo"));
+                Log.d(TAG, "CorporateIDNo++++++++++: " + mess.getString("CorporateIDNo"));
                 edit(etxCorporateIDCardNo1, "CorporateIDNo");
                 edit(etxTradeLocation1, "OperatingPlace");
                 edit(etxLoginName1, "LoginName");
@@ -217,11 +217,11 @@ public class CompanyMessageActivity extends AppCompatActivity {
     }
 
     private void setInvisible() {
-        sv_producer.setVisibility(View.INVISIBLE);
-        sv_quarantiner.setVisibility(View.INVISIBLE);
-        sv_processer.setVisibility(View.INVISIBLE);
-        sv_transporter.setVisibility(View.INVISIBLE);
-        sv_seller.setVisibility(View.INVISIBLE);
+        sv_producer.setVisibility(View.GONE);
+        sv_quarantiner.setVisibility(View.GONE);
+        sv_processer.setVisibility(View.GONE);
+        sv_transporter.setVisibility(View.GONE);
+        sv_seller.setVisibility(View.GONE);
     }
 
     private void edit(EditText editText, String str) throws JSONException {
